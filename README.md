@@ -1,1 +1,1 @@
-# dd-lab-domaingenerator
+# dws-template-domain-common
