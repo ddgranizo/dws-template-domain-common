@@ -12,7 +12,7 @@ pool:
 variables:
   projectTarget: 'Source/Dws.Template.Domain.Common/Dws.Template.Domain.Common.csproj'
   buildConfiguration: 'Release'
-  coreCliVersion: 3.1
+  coreCliVersion: 3.1.x
   runTime: 'win10-x64'
 
 steps:
