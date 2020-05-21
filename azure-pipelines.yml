@@ -10,11 +10,9 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solutionTarget: 'Main/dd-lab-devcli.sln'
-  testResultsPath: 'TestResults/'
-  coverageFolderPath : '/TestResults/Coverage/'
+  projectTarget: 'Source/Dws.Template.Domain.Common/Dws.Template.Domain.Common.csproj'
   buildConfiguration: 'Release'
-  coreCliVersion: 2.2.105
+  coreCliVersion: 3.1
   runTime: 'win10-x64'
 
 steps:
@@ -29,91 +27,10 @@ steps:
 
 ##### BUILD NET CORE #######
 
-
 - task: DotNetCoreCLI@2
   displayName: 'Building Core CLI...'
   inputs:
     command: build
-    projects: '**/DDCli/DDCli.csproj'
+    projects: $(projectTarget)
     configuration: $(buildConfiguration)
 
-##### BUILD NET FRAMEWORK #######
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: 'Main/Source/DDCli.Dynamics/DDCli.Dynamics.csproj'
-    feedsToUse: 'select'
-    restoreDirectory: '../../packages'
-  displayName: 'Restoring Framework nugets...'
-    
-- task: MSBuild@1
-  inputs:
-    solution: 'Main/Source/DDCli.Dynamics/DDCli.Dynamics.csproj'
-    msbuildArchitecture: 'x64'
-    configuration: 'Release'
-  displayName: 'Building Framework CLI...'
-
-
-
-###### UNIT TEST ########
-
-#- task: DotNetCoreCLI@2
-#  displayName: 'Unit tests...'
-#  inputs:
-#    command: test
-#    projects: '**/*.sln'
-#    publishTestResults: true
-
-###### CODE COVERAGE ########
-
-#- task: CmdLine@2
-#  inputs:
-#    script: |
-#      dotnet test Main\Test\DDCli.Test\DDCli.Test.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='$(Agent.BuildDirectory)/results' 
-#  displayName: 'Calculating code coverage...'
-
-#- task: PublishCodeCoverageResults@1
-#  inputs:
-#    codeCoverageTool: Cobertura
-#    summaryFileLocation: $(Agent.BuildDirectory)/results.cobertura.xml
-
-
-
-###### PUBLISH ######
-
-#- script: |
-#    mkdir Output
-#  displayName: "Making output directory"
-
-- script: |
-    dotnet publish -c Release -r win10-x64 --version-suffix $(Build.BuildId)
-  workingDirectory: "Main/Source/DDCli"
-  displayName: 'Publishing exe...'
-
-- task: ArchiveFiles@2
-  displayName: 'Packing DDCli into zip...'
-  inputs:
-    rootFolderOrFile: 'Main/Source/DDCli/bin/Release/netcoreapp2.0/win10-x64/publish/'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/DDCli/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-    verbose: true
-
-- task: ArchiveFiles@2
-  displayName: 'Packing DDCli.Dynamics into zip...'
-  inputs:
-    rootFolderOrFile: 'Main/Source/DDCli.Dynamics/bin/Release/'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/DDCli.Dynamics/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-    verbose: true
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'Assembly'
-    publishLocation: Container
-    
