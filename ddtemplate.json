@@ -1,0 +1,25 @@
+{
+	"templateName": "React basic 5 Views PCF TextBox",
+	"replacePairs": [
+		{
+			"replaceDescription": "NamespaceRepositoryFormat", 
+			"oldValue": "dws-template", 
+			"applyForDirectories": true, 
+			"applyForFileNames": true, 
+			"applyForFileContents": true,
+			"applyForFilePattern": "*.json|.gitignore|*.md|*.sln|*.yml|*.csproj|*.cs"
+		},
+		{
+			"replaceDescription": "Namespace", 
+			"oldValue": "Dws.Template", 
+			"applyForDirectories": true, 
+			"applyForFileNames": true, 
+			"applyForFileContents": true,
+			"applyForFilePattern": "*.json|.gitignore|*.md|*.sln|*.yml|*.csproj|*.cs"
+		}
+	],
+	"ignorePathPatterns": [
+		"ddtemplate.json",
+		".git"
+	]
+}
