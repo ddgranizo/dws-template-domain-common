@@ -42,6 +42,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '$(projectTarget)'
+	packDirectory: '$(Build.ArtifactStagingDirectory)'
     includesymbols: true
     versioningScheme: 'byPrereleaseNumber'
     majorVersion: '1'
@@ -49,9 +50,11 @@ steps:
     patchVersion: '0'
 
 
-- task: DotNetCoreCLI@2
+- task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
     publishVstsFeed: '#DEVOPSPROJECTFEEDID#'
+    publishPackageMetadata: false
+    allowPackageConflicts: true
