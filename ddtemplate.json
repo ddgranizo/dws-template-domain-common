@@ -16,7 +16,24 @@
 			"applyForFileNames": true, 
 			"applyForFileContents": true,
 			"applyForFilePattern": "*.json|.gitignore|*.md|*.sln|*.yml|*.csproj|*.cs"
+		},
+		{
+			"replaceDescription": "DevopsProjectId", 
+			"oldValue": "#DEVOPSPROJECTID#", 
+			"applyForDirectories": false, 
+			"applyForFileNames": false, 
+			"applyForFileContents": true,
+			"applyForFilePattern": "*.yml"
+		},
+		{
+			"replaceDescription": "DevopsProjectFeedId", 
+			"oldValue": "#DEVOPSPROJECTFEEDID#", 
+			"applyForDirectories": false, 
+			"applyForFileNames": false, 
+			"applyForFileContents": true,
+			"applyForFilePattern": "*.yml"
 		}
+		
 	],
 	"ignorePathPatterns": [
 		"ddtemplate.json",

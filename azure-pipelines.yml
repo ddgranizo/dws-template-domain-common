@@ -12,7 +12,7 @@ pool:
 variables:
   projectTarget: 'Source/Dws.Template.Domain.Common/Dws.Template.Domain.Common.csproj'
   buildConfiguration: 'Release'
-  coreCliVersion: 3.1.x
+  coreCliVersion: 3.1.300
   runTime: 'win10-x64'
 
 steps:
@@ -34,3 +34,24 @@ steps:
     projects: $(projectTarget)
     configuration: $(buildConfiguration)
 
+
+##### NUGET #######
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '$(projectTarget)'
+    includesymbols: true
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '1'
+    minorVersion: '0'
+    patchVersion: '0'
+	
+	
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '#DEVOPSPROJECTID#/#DEVOPSPROJECTFEEDID#'
