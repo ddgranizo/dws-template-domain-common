@@ -42,7 +42,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: '$(projectTarget)'
-	packDirectory: '$(Build.ArtifactStagingDirectory)'
+    packDirectory: '$(Build.ArtifactStagingDirectory)'
     includesymbols: true
     versioningScheme: 'byPrereleaseNumber'
     majorVersion: '1'
