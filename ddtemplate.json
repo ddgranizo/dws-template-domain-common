@@ -25,7 +25,6 @@
 			"applyForFileContents": true,
 			"applyForFilePattern": "*.yml"
 		}
-		
 	],
 	"ignorePathPatterns": [
 		"ddtemplate.json",
