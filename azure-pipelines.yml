@@ -44,8 +44,8 @@ steps:
     packagesToPack: '$(projectTarget)'
     packDirectory: '$(Build.ArtifactStagingDirectory)'
     includesymbols: true
-    majorVersion: '[Version.Major]'
-    minorVersion: '[Version.Minor]'
+    majorVersion: '@Version.Major'
+    minorVersion: '@Version.Minor'
     buildVersion: '$(Build.BuildNumber)'
 
 
@@ -54,6 +54,6 @@ steps:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: '[Devops.FeedId]'
+    publishVstsFeed: '@Devops.FeedId'
     publishPackageMetadata: false
     allowPackageConflicts: true
