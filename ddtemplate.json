@@ -19,7 +19,23 @@
 		},
 		{
 			"replaceDescription": "DevopsProjectFeedId", 
-			"oldValue": "#DEVOPSPROJECTFEEDID#", 
+			"oldValue": "@Devops.FeedId", 
+			"applyForDirectories": false, 
+			"applyForFileNames": false, 
+			"applyForFileContents": true,
+			"applyForFilePattern": "*.yml"
+		},
+		{
+			"replaceDescription": "DevopsMajorVersion", 
+			"oldValue": "@Version.Major", 
+			"applyForDirectories": false, 
+			"applyForFileNames": false, 
+			"applyForFileContents": true,
+			"applyForFilePattern": "*.yml"
+		},
+		{
+			"replaceDescription": "DevopsMinorVersion", 
+			"oldValue": "@Version.Minor", 
 			"applyForDirectories": false, 
 			"applyForFileNames": false, 
 			"applyForFileContents": true,
