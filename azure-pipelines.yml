@@ -38,16 +38,18 @@ steps:
 ##### NUGET #######
 
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'pack'
-    packagesToPack: '$(projectTarget)'
-    packDirectory: '$(Build.ArtifactStagingDirectory)'
-    includesymbols: true
-    majorVersion: '@Version.Major'
-    minorVersion: '@Version.Minor'
-    buildVersion: '$(Build.BuildNumber)'
+##- task: DotNetCoreCLI@2
+##  inputs:
+##    command: 'pack'
+##    packagesToPack: '$(projectTarget)'
+##    packDirectory: '$(Build.ArtifactStagingDirectory)'
+##    includesymbols: true
+##    majorVersion: '@Version.Major'
+##    minorVersion: '@Version.Minor'
+##    buildVersion: '$(Build.BuildNumber)'
 
+- script: dotnet pack $(projectTarget) -p:PackageVersion=@Version.Major.@Version.Minor.$(Build.BuildNumber) --output $(Build.ArtifactStagingDirectory) --include-symbols
+  displayName: 'DotNet Pack'
 
 - task: NuGetCommand@2
   inputs:
