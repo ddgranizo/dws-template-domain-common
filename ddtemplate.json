@@ -40,6 +40,14 @@
 			"applyForFileNames": false, 
 			"applyForFileContents": true,
 			"applyForFilePattern": "*.yml"
+		},
+		{
+			"replaceDescription": "DevopsPatchVersion", 
+			"oldValue": "@Version.Patch", 
+			"applyForDirectories": false, 
+			"applyForFileNames": false, 
+			"applyForFileContents": true,
+			"applyForFilePattern": "*.yml"
 		}
 	],
 	"ignorePathPatterns": [
