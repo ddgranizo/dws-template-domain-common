@@ -42,8 +42,8 @@
 			"applyForFilePattern": "*.yml"
 		},
 		{
-			"replaceDescription": "DevopsPatchVersion", 
-			"oldValue": "@Version.Patch", 
+			"replaceDescription": "DevopsRevisionVersion", 
+			"oldValue": "@Version.Revision", 
 			"applyForDirectories": false, 
 			"applyForFileNames": false, 
 			"applyForFileContents": true,
