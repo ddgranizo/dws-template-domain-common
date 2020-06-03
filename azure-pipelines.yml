@@ -48,7 +48,7 @@ steps:
 ##    minorVersion: '@Version.Minor'
 ##    buildVersion: '$(Build.BuildNumber)'
 
-- script: dotnet pack $(projectTarget) -p:PackageVersion=@Version.Major.@Version.Minor.$(Build.BuildNumber) --output $(Build.ArtifactStagingDirectory) --include-symbols
+- script: dotnet pack $(projectTarget) -p:PackageVersion=@Version.Major.@Version.Minor.$(Build.BuildId) --output $(Build.ArtifactStagingDirectory) --include-symbols
   displayName: 'DotNet Pack'
 
 - task: NuGetCommand@2
