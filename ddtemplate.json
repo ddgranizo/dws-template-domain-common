@@ -43,7 +43,7 @@
 		},
 		{
 			"replaceDescription": "DevopsRevisionVersion", 
-			"oldValue": "@Version.Revision", 
+			"oldValue": "@Version.Build", 
 			"applyForDirectories": false, 
 			"applyForFileNames": false, 
 			"applyForFileContents": true,

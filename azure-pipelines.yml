@@ -49,7 +49,7 @@ steps:
 ##    buildVersion: '$(Build.BuildNumber)'
 
 
-- script: dotnet pack $(projectTarget) -p:PackageVersion=@Version.Major.@Version.Minor.@Version.Revision.$(Build.BuildId) --output $(Build.ArtifactStagingDirectory) --include-symbols
+- script: dotnet pack $(projectTarget) -p:PackageVersion=@Version.Major.@Version.Minor.@Version.Build.$(Build.BuildId) --output $(Build.ArtifactStagingDirectory) --include-symbols
   displayName: 'DotNet Pack'
 
 - task: NuGetCommand@2
